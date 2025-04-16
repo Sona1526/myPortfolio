@@ -1,0 +1,84 @@
+
+// home input
+// Home input styling override
+/************input checkin checkout date styles************/
+::ng-deep .mat-mdc-form-field,
+::ng-deep .mat-mdc-form-field-infix,
+::ng-deep .mat-mdc-form-field-wrapper,
+::ng-deep .mat-mdc-text-field-wrapper {
+  margin: 0 !important;
+  background-color: white !important;
+  color: black !important;
+  min-height: 0 !important;
+  height: auto !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+::ng-deep .mat-mdc-form-field-wrapper{
+padding: 0px 10px 0px 12px!important;
+color: black !important;
+}
+::ng-deep .mat-mdc-form-field-subscript-wrapper{
+  color: black !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 0 !important;
+}
+// Optional: Ensures inputs inside fields are styled too
+::ng-deep input.mat-input-element {
+  background-color: white !important;
+  color: black !important;
+  margin: 0 !important;
+  padding: 0.5rem !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+::ng-deep .mat-date-range-input-wrapper, .mat-date-range-input-end-wrapper{
+  padding:0px 10px 0px 12px!important;
+}
+/************input checkin checkout date styles************/
+#bg-img {
+  background-image:  url('/hotelbookingimages/tajmahal.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 70vh;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+#home-inputs-content{
+   height:fit-content;
+   margin:auto auto;
+}
+// .form-control{
+// height: 55px;
+// }
+// .btn{
+//   height: 55px;
+// }
+
+.scroll-wrapper::-webkit-scrollbar {
+  display: none;
+}
+.btn-scroll{
+  margin:-20px;
+  z-index:999;
+  box-shadow: 0 0 3px ;
+}
+
+// animationnfade
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 100%;
+    transform: translateX(0);
+  }
+}
+.animationFadeContainer {
+  animation: fadeInUp 0.4s ease-in-out;
+}

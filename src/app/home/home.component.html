@@ -1,0 +1,79 @@
+<div class="container bg-light">
+  <div class="container">
+    <h1 class="h1 text-center">OBJECTIVE</h1>
+    <div class="card border-0">
+      <div class="card-body">
+        <p>To execute the knowledge and information into work and achieve success by making efforts to take the
+           company to great heights. It should allow me to utilize knowledge and skills in the best possible way
+           and should provide an opportunity to grow while contributing towards organizational growth.</p>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="container mt-5">
+    <img src="images/Sona.jpg" class="d-flex mx-auto img-fluid w-25 h-25">
+  </div> -->
+
+  <div class="container mt-5">
+    <a href="myprojects" class="nav-link text-white text-center "><button type="button" class="btn btn-lg w-50 btn-dark">See My Projects</button></a>
+  </div>
+
+  <div class="container mt-5 ">
+    <div class="card border-0 bg-light">
+      <div class="card-body bg-white ">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <h1 class="h1">TECHNICAL SKILLS</h1>
+            <div *ngFor="let skill of skills" class="my-3">
+              <h5 class="mb-1">{{ skill.name }}</h5>
+              <div class="progress" style="height: 20px;">
+                <div
+                  class="progress-bar progress-bar-striped progress-bar-animated bg-warning"
+                  role="progressbar"  [style.width.%]="skill.level">
+                  {{ skill.level }}%
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <h1 class="h1">FRAMEWORKS</h1>
+            <div *ngFor="let framework of frameworks" class="my-3">
+              <h5 class="mb-1">{{ framework.name }}</h5>
+              <div class="progress" style="height: 20px;">
+                <div
+                  class="progress-bar progress-bar-striped progress-bar-animated bg-dark"
+                  role="progressbar"  [style.width.%]="framework.level">
+                  {{ framework.level }}%
+                </div>
+              </div>
+            </div>
+
+
+            <h1 class="h1">APPLICATIONS</h1>
+            <div *ngFor="let application of applications" class="my-3">
+              <h5 class="mb-1">{{ application.name }}</h5>
+              <div class="progress" style="height: 20px;">
+                <div
+                  class="progress-bar progress-bar-striped progress-bar-animated bg-secondary"
+                  role="progressbar"  [style.width.%]="application.level">
+                  {{ application.level }}%
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="container mt-5">
+    <h1 class="h1">SKILLS</h1>
+    <ul class="list-group">
+      <li class="list-group-item">Design and executing the program logic.</li>
+      <li class="list-group-item">Analysing the program for accurate result.</li>
+      <li class="list-group-item"> Analysing the requirement and create software UI and functionalities.</li>
+      <li class="list-group-item"> Able to work in front-end and backend.</li>
+      <li class="list-group-item"> Experienced in Creating CRM Applications and E-commerce websites.</li>
+      <li class="list-group-item"> Experience in Providing User-friendly interface and Admin Panel to clients.</li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,225 @@
+<div>
+  <!-- nav bar -->
+  <div class="sticky-top">
+    <nav class="navbar navbar-expand-sm bg-dark">
+      <div class="container-fluid">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#">BookMyTrip</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#"><i class="bi bi-currency-rupee"></i>INR</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#"><i class="bi bi-patch-question"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#">REGISTER</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#">SIGN IN</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <nav class="navbar navbar-expand-sm bg-light p-4"></nav>
+  </div>
+
+  <!-- home content --> <!-- background-image with inputs -->
+  <div class="container-fluid" id="bg-img">
+    <div class="container px-5" id="home-inputs-content">
+        <h5>Find Your Next Stay</h5>
+        <p>Search Low Prices on Hotels, Home and much more</p>
+
+      <form method="post" >
+        <div class="row bg-warning d-flex mx-auto py-2 rounded" style="border:2px solid #000000;box-shadow: 0px 0px 15px #000000;">
+          <div class="col-lg-4 col-md-6 col-sm-12 my-1">
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-buildings"></i></span>
+              <input type="text" class="form-control p-4" name="place" [(ngModel)]="place" placeholder="Where are you going?" >
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-12 my-1 p-0 bg-white">
+            <mat-form-field class="w-100">
+              <mat-date-range-input  [rangePicker]="picker"  class="m-1">
+                <input matStartDate name="checkin"  [(ngModel)]="checkin" placeholder="Check-in date" class="text-dark text-center">
+                <input matEndDate name="checkout"  [(ngModel)]="checkout" placeholder="Check-out date" class="text-dark text-center ">
+              </mat-date-range-input>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-date-range-picker #picker ></mat-date-range-picker>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-3 col-md-6 col-sm-12 my-1">
+            <div class="dropdown w-100">
+                <button type="button" class="form-control p-4 text-start dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" > <i class="bi bi-person-fill"></i>  &nbsp; &nbsp; {{adult}} Adult - {{children}} children - {{room}} room </button>
+              <div class="dropdown-menu" style="width: 300px;" (click)="$event.stopPropagation()">
+                <div class="container">
+
+                  <!-- Adult -->
+                  <div class="row mb-3 align-items-center">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                      <label for="adult" class="form-label mb-0">Adult</label>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                      <div class="input-group">
+                        <button class="btn btn-outline-secondary" type="button" (click)="decrement('adult')">-</button>
+                        <input type="text" class="form-control text-center" name="adult" [(ngModel)]="adult" readonly>
+                        <button class="btn btn-outline-secondary" type="button" (click)="increment('adult')">+</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Children -->
+                  <div class="row mb-3 align-items-center">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                      <label for="children" class="form-label mb-0">Children</label>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                      <div class="input-group">
+                        <button class="btn btn-outline-secondary" type="button" (click)="decrement('children')">-</button>
+                        <input type="text" class="form-control text-center" name="children" [(ngModel)]="children" readonly>
+                        <button class="btn btn-outline-secondary" type="button" (click)="increment('children')">+</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Room -->
+                  <div class="row mb-3 align-items-center">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                      <label for="room" class="form-label mb-0">Room</label>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                      <div class="input-group">
+                        <button class="btn btn-outline-secondary" type="button" (click)="decrement('room')">-</button>
+                        <input type="text" class="form-control text-center" name="room" [(ngModel)]="room" readonly>
+                        <button class="btn btn-outline-secondary" type="button" (click)="increment('room')">+</button>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="dropdown-divider"></div>
+                <div class="row mb-3 align-items-center">
+                  <div class="col-lg-6 col-md-6 col-sm-6">
+                    <label class="dropdown-item" for="pets">Travelling With Pets?</label>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="form-check form-switch d-flex ">
+                      <input class="form-check-input  ms-auto me-3" type="checkbox" id="pets" name="pets" [(ngModel)]="pets" value="yes" checked>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-6 col-sm-12 my-1">
+            <button type="button" class="btn btn-dark w-100 h-100 fs-4" (click)="search()">Search</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Browse By type Content-->
+  <div class="container-fluid pt-5 ">
+    <div class="container ">
+      <h3>Browse By Property Type</h3>
+      <p>Stay at which type of property you like it</p>
+      <div class=" d-flex align-items-center">
+        <button class="btn bg-light rounded-circle btn-scroll" (click)="scrollLeft()">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        <div #scrollContainer class="scroll-wrapper d-flex flex-nowrap overflow-scroll py-2" style="scroll-behavior: smooth; width: 100%;">
+          <div class="card me-4 border-0 rounded " style="width: 15rem;min-width: 10rem;" *ngFor="let property of properties">
+            <img class="card-img-top"   src="/hotelbookingimages/tajmahal.jpg" alt="Card image cap">
+            <div class="card-body ps-0">
+              <a href="#" class="nav-link card-title">{{property.name}}</a>
+            </div>
+          </div>
+        </div>
+        <button class="btn bg-light rounded-circle btn-scroll" (click)="scrollRight()">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!--  Popular Destinations Content -->
+  <div class="container-fluid">
+    <div class="container">
+      <h3>Popular Destinations</h3>
+      <p>Lot of offers in a Popular Destination explore it</p>
+      <div class=" d-flex align-items-center">
+        <button class="btn bg-light rounded-circle btn-scroll" (click)="scrollLeft1()">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        <div #scrollContainer1 class="scroll-wrapper d-flex flex-nowrap overflow-scroll py-2" style="scroll-behavior: smooth; width: 100%;">
+          <div class="card me-4 border-0 rounded  p-1 " style="width: 10rem;min-width: 10rem;" *ngFor="let destination of destinations">
+            <img class="card-img-top rounded-circle" style="min-height: 9rem;min-width: 8rem;" src="/hotelbookingimages/tajmahal.jpg" alt="Card image cap">
+            <div class="card-body w-100">
+              <a href="#" class="nav-link text-center  bg-dark text-white rounded py-1">{{destination.name}}</a>
+            </div>
+          </div>
+        </div>
+        <button class="btn bg-light rounded-circle btn-scroll" (click)="scrollRight1()">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pick a Vibe Content -->
+  <div class="container-fluid mb-2">
+    <div class="container">
+      <h3>Quick and Easy Planner</h3>
+      <p>Pick a vibe and explore the top destination in India</p>
+          <button type="button" class="btn btn-outline-dark rounded me-3"
+            [ngClass]="{'btn-dark': selectedTypeName == type.name, 'btn-outline-dark': selectedTypeName !== type.name}"
+            *ngFor="let type of types"  (click)="typeClick(type.name)">{{type.name}}
+          </button>
+    </div>
+  </div>
+
+  <div class="container-fluid ">
+    <div class="container">
+      <div class=" d-flex align-items-center">
+        <button class="btn bg-light rounded-circle btn-scroll" (click)="scrollLeft2()">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        <div [ngClass]="animationfade"  #scrollContainer2 class="scroll-wrapper d-flex flex-nowrap overflow-scroll py-2" id="typePlacesContainer" style="scroll-behavior: smooth; width: 100%;">
+          <div class="card me-4 border-0 rounded " style="width: 14rem;min-width: 14rem;" *ngFor="let typeplace of typePlaces">
+            <img class="card-img-top "style="min-height: 12rem;" src="/hotelbookingimages/tajmahal.jpg" alt="Card image cap">
+            <div class="card-body ps-0">
+              <a href="#" class="nav-link card-title">{{typeplace}}</a>
+            </div>
+          </div>
+        </div>
+        <button class="btn bg-light rounded-circle btn-scroll" (click)="scrollRight2()">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
