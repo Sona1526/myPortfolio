@@ -12,6 +12,7 @@ import { BookingConfirmationComponent } from './booking-confirmation/booking-con
 
 export const routes: Routes = [
   {path:'' , redirectTo:'home', pathMatch:'full'},
+  {path:'**' , redirectTo:'home', pathMatch:'full'},
   {path:'home' , component:HomeComponent},
   {path:'myprojects' , component:MyprojectsComponent},
   {path:'hotelbooking' , component:HotelbookingComponent},
