@@ -11,8 +11,6 @@ import { BookingPageComponent } from './booking-page/booking-page.component';
 import { BookingConfirmationComponent } from './booking-confirmation/booking-confirmation.component';
 
 export const routes: Routes = [
- // {path:'' , redirectTo:'home', pathMatch:'full'},
-  //{path:'**' , redirectTo:'home', pathMatch:'full'},
   {path:'' , component:HomeComponent},
   {path:'myprojects' , component:MyprojectsComponent},
   {path:'hotelbooking' , component:HotelbookingComponent},
