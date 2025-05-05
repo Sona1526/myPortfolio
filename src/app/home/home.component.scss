@@ -1,0 +1,16 @@
+@use 'shared_variables' as *;
+.navbar-top-1{
+  background-color: $black-color!important;
+}
+.navbar-top-1 ul li a{
+  color:$white-color!important;
+}
+.navbar-top-2{
+  background-color: $primary-color!important;
+
+}
+
+.navbar-top-2 ul li a{
+  color:$white-color!important;
+  font-size: 30px;
+}

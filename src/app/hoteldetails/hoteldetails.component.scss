@@ -1,0 +1,11 @@
+img {
+  transition: transform 0.3s ease-in-out;
+}
+
+img:hover {
+  transform: scale(1.02);
+  cursor: pointer;
+}
+p,small,ul li{
+  color:#595959;
+  }

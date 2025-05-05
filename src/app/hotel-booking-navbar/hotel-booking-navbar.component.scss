@@ -1,0 +1,116 @@
+@use 'shared_variables' as *;
+//topnav home input
+.nav-top-1{
+  background-color: $primary-color!important;
+}
+.nav-top-2{
+  background-color: $white-color!important;
+}
+.input-row{
+  background-color :#ffc300 !important;
+}
+
+//***********************************************top sticky animation
+// =======================
+// THEME COLOR VARIABLES
+// =======================
+$color-text: #000000;
+$color-accent-1: #ffc107;
+$color-accent-2: #ffcd39;
+$color-accent-3: #ffe066;
+$color-accent-4: #fff3cd;
+$color-bg: #ffffff;
+$color-dark: #121212;
+$color-light: #f4f4f4;
+$color-accent: #ffc107;
+$color-muted: #999;
+
+.content {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.text-shadows {
+  text-shadow: 1px 1px 0 $white-color;
+  font-family: bungee, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: calc(0.6rem + 0.5vw); // Small text
+  text-align: center;
+  margin: 0 auto;
+  color: $color-text;
+
+  padding: 0.25rem 1rem;
+  border-radius: 0.5rem;
+  animation: shadows 2.5s ease-in-out infinite;
+  letter-spacing: 0.15rem;
+}
+
+@keyframes shadows {
+  0% {
+    transform: translate(0, 0);
+    text-shadow: none;
+  }
+  10% {
+    transform: translate(-1px, -1px);
+    text-shadow: 1px 1px 0 $color-accent-1;
+  }
+  20% {
+    transform: translate(-2px, -2px);
+    text-shadow:
+      1px 1px 0 $color-accent-1,
+      2px 2px 0 $color-accent-2;
+  }
+  30% {
+    transform: translate(-3px, -3px);
+    text-shadow:
+      1px 1px 0 $color-accent-1,
+      2px 2px 0 $color-accent-2,
+      3px 3px 0 $color-accent-3;
+  }
+  40% {
+    transform: translate(-4px, -4px);
+    text-shadow:
+      1px 1px 0 $color-accent-1,
+      2px 2px 0 $color-accent-2,
+      3px 3px 0 $color-accent-3,
+      4px 4px 0 $color-accent-4;
+  }
+  50% {
+    transform: translate(-5px, -5px);
+    text-shadow:
+      1px 1px 0 $color-accent-1,
+      2px 2px 0 $color-accent-2,
+      3px 3px 0 $color-accent-3,
+      4px 4px 0 $color-accent-4;
+  }
+  60% {
+    transform: translate(-4px, -4px);
+    text-shadow:
+      1px 1px 0 $color-accent-1,
+      2px 2px 0 $color-accent-2,
+      3px 3px 0 $color-accent-3;
+  }
+  70% {
+    transform: translate(-3px, -3px);
+    text-shadow:
+      1px 1px 0 $color-accent-1,
+      2px 2px 0 $color-accent-2;
+  }
+  80% {
+    transform: translate(-2px, -2px);
+    text-shadow:
+      1px 1px 0 $color-accent-1;
+  }
+  90% {
+    transform: translate(-1px, -1px);
+    text-shadow:
+      1px 1px 0 $color-accent-1;
+  }
+  100% {
+    transform: translate(0, 0);
+    text-shadow: none;
+  }
+}

@@ -1,0 +1,15 @@
+@use 'shared_variables' as *;
+
+h1{
+  color: $black-color!important;
+  text-decoration:underline!important;
+}
+
+.card .card-body a{
+  background-color: $primary-color!important;
+}
+.card{
+  border:1px solid $primary-color!important;
+  border-top: 0!important;
+  border-radius:0!important;
+}

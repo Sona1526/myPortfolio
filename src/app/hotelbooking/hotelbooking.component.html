@@ -1,51 +1,25 @@
+<app-hotel-booking-navbar></app-hotel-booking-navbar>
 <div>
-  <!-- nav bar -->
-  <div class="sticky-top">
-    <nav class="navbar navbar-expand-sm bg-dark">
-      <div class="container-fluid">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link text-white" href="#">BookMyTrip</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav justify-content-end">
-          <li class="nav-item">
-            <a class="nav-link text-white" href="#"><i class="bi bi-currency-rupee"></i>INR</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="#"><i class="bi bi-patch-question"></i></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="#">REGISTER</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="#">SIGN IN</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <nav class="navbar navbar-expand-sm bg-light p-4"></nav>
-  </div>
-
   <!-- home content --> <!-- background-image with inputs -->
   <div class="container-fluid" id="bg-img">
     <div class="container px-5" id="home-inputs-content">
         <h5>Find Your Next Stay</h5>
         <p>Search Low Prices on Hotels, Home and much more</p>
 
-      <form method="post" >
-        <div class="row bg-warning d-flex mx-auto py-2 rounded" style="border:2px solid #000000;box-shadow: 0px 0px 15px #000000;">
+      <form method="post" class="bg-primary" #inputform="ngForm" (submit)="sendMessage(inputform)">
+        <div class="row input-row d-flex mx-auto py-2 rounded" style="border:2px solid #000000;box-shadow: 0px 0px 15px #000000;">
           <div class="col-lg-4 col-md-6 col-sm-12 my-1">
             <div class="input-group">
               <span class="input-group-text"><i class="bi bi-buildings"></i></span>
               <input type="text" class="form-control p-4" name="place" [(ngModel)]="place" placeholder="Where are you going?" >
             </div>
+            <p *ngIf="submitted && hotelSiteSearch == undefined" class="text-warning ps-5 py-0 my-0 ">Please Enter valid destination</p>
           </div>
           <div class="col-lg-3 col-md-6 col-sm-12 my-1 p-0 bg-white">
             <mat-form-field class="w-100">
               <mat-date-range-input  [rangePicker]="picker"  class="m-1">
-                <input matStartDate name="checkin"  [(ngModel)]="checkin" placeholder="Check-in date" class="text-dark text-center">
-                <input matEndDate name="checkout"  [(ngModel)]="checkout" placeholder="Check-out date" class="text-dark text-center ">
+                <input matStartDate name="checkin"  [(ngModel)]="checkin" placeholder="Check-in date" class="text-dark text-center" readonly>
+                <input matEndDate name="checkout"  [(ngModel)]="checkout" placeholder="Check-out date" class="text-dark text-center " readonly>
               </mat-date-range-input>
               <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-date-range-picker #picker ></mat-date-range-picker>
@@ -54,7 +28,7 @@
 
           <div class="col-lg-3 col-md-6 col-sm-12 my-1">
             <div class="dropdown w-100">
-                <button type="button" class="form-control p-4 text-start dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" > <i class="bi bi-person-fill"></i>  &nbsp; &nbsp; {{adult}} Adult - {{children}} children - {{room}} room </button>
+                <button type="button" class="form-control p-4 text-start dropdown-toggle toggle-btn" data-bs-toggle="dropdown" aria-expanded="false" > <i class="bi bi-person-fill"></i>  &nbsp; &nbsp; {{adult}} Adult - {{children}} children - {{room}} room </button>
               <div class="dropdown-menu" style="width: 300px;" (click)="$event.stopPropagation()">
                 <div class="container">
 
@@ -116,10 +90,11 @@
             </div>
           </div>
           <div class="col-lg-2 col-md-6 col-sm-12 my-1">
-            <button type="button" class="btn btn-dark w-100 h-100 fs-4" (click)="search()">Search</button>
+            <button type="submit" class="btn btn-prime w-100 h-100 fs-4" >Search</button>
           </div>
         </div>
       </form>
+
     </div>
   </div>
 
@@ -203,23 +178,5 @@
       </div>
     </div>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
+<app-hotel-booking-footer></app-hotel-booking-footer>

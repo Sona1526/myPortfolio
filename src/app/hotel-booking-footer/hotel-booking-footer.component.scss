@@ -1,0 +1,36 @@
+@use 'shared_variables' as *;
+// footer
+
+
+footer {
+  background-color: $black-color;
+  color: $white-color;
+  padding: 2rem 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+
+    a {
+      color: $white-color;
+      text-decoration: none;
+      font-weight: 500;
+
+      &:hover {
+        color: $white-color;
+        transition: 0.3s;
+      }
+    }
+  }
+
+  .footer-bottom {
+    font-size: 0.875rem;
+    color: $white-color;
+  }
+}

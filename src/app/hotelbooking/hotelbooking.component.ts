@@ -1,12 +1,18 @@
 import { Component, ViewChild, ElementRef,OnInit,ChangeDetectionStrategy } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { datas } from '../data/hotel-data'; // for data
+import { Hotel } from '../data/hotel.model';// for data
+import { DataService } from '../services/data.service'; // service
+import { Router } from '@angular/router'; //routing
 // for date pick
 import { MatDatepickerModule, MatDateRangeInput } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule,provideNativeDateAdapter } from '@angular/material/core';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { HotelBookingNavbarComponent } from "../hotel-booking-navbar/hotel-booking-navbar.component";
+import { HotelBookingFooterComponent } from '../hotel-booking-footer/hotel-booking-footer.component';
 // import {ChangeDetectionStrategy} from '@angular/core';
 // import {provideNativeDateAdapter} from '@angular/material/core';
 
@@ -14,9 +20,9 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 @Component({
   selector: 'app-hotelbooking',
   standalone: true,
-  imports: [FormsModule,CommonModule, ReactiveFormsModule,
-              MatDatepickerModule,  MatFormFieldModule,  MatInputModule,  MatNativeDateModule,MatDateRangeInput
-            ],
+  imports: [FormsModule, CommonModule, ReactiveFormsModule,
+    MatDatepickerModule, MatFormFieldModule, MatInputModule, MatNativeDateModule, MatDateRangeInput,
+     HotelBookingNavbarComponent,HotelBookingFooterComponent],
             changeDetection:ChangeDetectionStrategy.OnPush,
 
   templateUrl: './hotelbooking.component.html',
@@ -26,10 +32,15 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 export class HotelbookingComponent implements OnInit {
 
   /*************home search inputs***************/
+  hotelList: Hotel[] = datas;
+  // send data from search result to hotel component
+  constructor(private dataService: DataService, private router: Router) {} //constructor for dataservice ,router
+
+
   place='';
   checkin :Date | null = null;
   checkout : Date | null = null;
-  pets='';
+  pets=false;
 
   myFilter = (d: Date | null): boolean => {
     const today = new Date();
@@ -54,9 +65,28 @@ export class HotelbookingComponent implements OnInit {
       this[field]--;
     }
   }
-  search(){
-    console.log(this.place,this.adult,this.children,this.room,this.pets,this.checkin,this.checkout);
+  submitted = false;
+  hotelListCount =0;
+  hotelSiteSearch: Hotel |undefined;
+  sendMessage(inputform: NgForm) {
+    this.submitted = true;
+    // console.log(this.place,this.adult,this.children,this.room,this.pets,this.checkin,this.checkout);
+    // this.dataService.updateMessage(this.place); //message send to hotels
+    this.hotelListCount = this.hotelList.length;
+    this.hotelSiteSearch =this.hotelList.find(hotel => hotel.site ===this.place);
+    if(this.place && this.hotelSiteSearch!==undefined ){
+      localStorage.setItem('receivedMessage', this.place.toLowerCase());
+      localStorage.setItem('searchedinputs', JSON.stringify(inputform.value));
+      this.router.navigate(['/hotels']); //  Redirect to hotels
+    }
+
   }
+
+
+
+
+
+
   /*************Browse By property name***************/
   properties = [
     { name: "Hotels", image: "tajmahal.jpg" },
@@ -162,7 +192,8 @@ export class HotelbookingComponent implements OnInit {
 
 
 
-
+  // footer
+  currentYear: number = new Date().getFullYear();
 
 
 }

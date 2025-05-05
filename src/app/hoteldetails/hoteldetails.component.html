@@ -1,0 +1,259 @@
+<app-hotel-booking-navbar></app-hotel-booking-navbar>
+<div class="container-fluid">
+  <div class="container mt-4">
+
+    <div class="row" >
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 ">
+        <small style="font-size: medium;" class="px-1" *ngFor="let star of getStars(detail?.starRating)">
+          <i class="text-warning bi bi-star-fill"></i>
+        </small>
+        <small style="font-size: medium;" class="px-1" *ngIf="(detail?.starRating ?? 0) %1!== 0">
+          <i class="text-warning bi bi-star-half"></i>
+        </small>
+        <h4>{{detail?.hotelName | uppercase}} </h4>
+        <p>{{detail?.address | titlecase}} </p>
+        <!-- Image Gallery -->
+        <div class="row g-2 mx-0">
+          <div class="col-lg-8 col-md-12">
+            <img
+              src="hotelbookingimages/hotel-image6.jpg"
+              class="img-fluid w-100 h-100 shadow-sm rounded m-0 p-0"
+              alt="Main Image"
+            />
+          </div>
+
+          <div class="col-lg-4 col-md-12 d-flex flex-column gap-2">
+            <img
+              src="hotelbookingimages/hotel-image10.jpg"
+              class="img-fluid w-100 h-100 shadow-sm rounded m-0 p-0"
+              alt="Side Image 1"
+            />
+            <img
+              src="hotelbookingimages/hotel-image3.jpg"
+              class="img-fluid w-100 h-100 shadow-sm rounded m-0 p-0 "
+              alt="Side Image 2"
+            />
+          </div>
+
+          <div class="col-lg-3 col-6">
+            <img
+              src="hotelbookingimages/hotel-image4.jpg"
+              class="img-fluid w-100 h-100 shadow-sm rounded m-0 p-0"
+              alt="Gallery Image 1"
+            />
+          </div>
+          <div class="col-lg-3 col-6">
+            <img
+              src="hotelbookingimages/hotel-image5.jpg"
+              class="img-fluid w-100 h-100 shadow-sm rounded m-0 p-0"
+              alt="Gallery Image 2"
+            />
+          </div>
+          <div class="col-lg-3 col-6">
+            <img
+              src="hotelbookingimages/hotel-image11.jpg"
+              class="img-fluid w-100 h-100 shadow-sm rounded m-0 p-0"
+              alt="Gallery Image 3"
+            />
+          </div>
+          <div class="col-lg-3 col-6">
+            <img
+              src="hotelbookingimages/hotel-image2.jpg"
+              class="img-fluid w-100 h-100 shadow-sm rounded m-0 p-0"
+              alt="Gallery Image 4"
+            />
+          </div>
+        </div>
+        <!-- Image Gallery end -->
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        <div class="d-flex justify-content-end mb-5 ">
+          <a class="fs-4 me-4"><i class="bi bi-heart"></i></a>
+          <a class="fs-4 me-4"><i class="bi bi-share"></i></a>
+          <a class="fs-5 btn btn-primary px-3 py-1" href="">Book</a>
+
+        </div>
+        <h6 class=" bg-warning text-center  p-2 rounded">Customer Says About this Hotel</h6>
+        <div class="card">
+          <div class="card-body p-0">
+            <div class="pt-2 pe-2  ">
+
+              <div class="d-flex justify-content-end ">
+                <small class="bg-primary p-2 text-white rounded">{{detail?.reviewRating}}</small>
+                <span class="bg-light p-1 rounded">
+                  {{ (detail?.reviewRating ?? 0) > 9 ? 'Excellent'
+                  : (detail?.reviewRating ?? 0) > 8 ? 'Superb'
+                  : (detail?.reviewRating ?? 0) > 7 ? 'Good'
+                  : (detail?.reviewRating ?? 0) > 5 ? 'Average'
+                  : 'Poor' }}
+                </span>
+              </div>
+              <p class="d-flex justify-content-end ">{{detail?.reviewCount}} reviews</p>
+            </div>
+            <hr>
+            <div class=" ps-2">
+              <p>Guest Who Stayed here Loved </p>
+              <small class="ps-3"><i> "Good place for stay. Very Clean. Good Ambience"</i></small><br>
+              <small class="ps-3 pt-5"><i class="bi bi-person-circle"></i> Sneka</small>
+            </div>
+            <hr>
+            <div class="px-2 pb-1 m-0">
+              <small class="">Staff Rating</small>
+              <small class="d-flex float-end">{{ detail?.reviewRating}}</small>
+            </div>
+
+
+          </div>
+        </div>
+        <div class="flex-grow-1 mt-2">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248755.79498231475!2d80.04351797777613!3d13.047807592779781!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5265ea4f7d3361%3A0x6e61a70b6863d433!2sChennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1745331043525!5m2!1sen!2sin"
+                class="flex-grow-1"  width="100%" height="100%" class="border-0 rounded w-100 h-100"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+      <!-- <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 ">
+        <button type="button" class="btn btn-warning" >Book</button>
+      </div> -->
+    </div>
+
+    <div class="card-body mt-2 mb-4">
+      <h4>Facilities</h4>
+      <a class="btn me-4 mt-3 px-5 py-3 border" *ngFor="let Facility of detail?.hotelAmenities">{{Facility}}</a>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <p class="">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+          of type and scrambled it to make a type specimen book.
+        </p>
+        <p>It has survived not only five centuries, but also the leap into
+          electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+          containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+          of Lorem Ipsum.</p>
+        <p class="">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+          of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+          electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+          containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+          of Lorem Ipsum.</p>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 ">
+        <div class="card-body bg-light shadow-sm p-4 ">
+          <p style="font-weight: bolder;color: #000000;">Proerty Highlights</p>
+          <small>{{ detail?.shortDescriptions}}</small><br>
+
+          <p> {{ (detail?.reviewRating ?? 0) > 9 ? 'Excellent'
+            : (detail?.reviewRating ?? 0) > 8 ? 'Superb'
+            : (detail?.reviewRating ?? 0) > 7 ? 'Good'
+            : (detail?.reviewRating ?? 0) > 5 ? 'Average'
+            : 'Poor' }} stay!
+          </p>
+          <h6  style="font-weight: bolder;color: #000000;">Check-in and Check-out Details </h6>
+          <small>{{detail?.checkInTime}} - {{detail?.checkOutTime}}  </small><br><br>
+          <h6>Available</h6>
+          <small *ngFor="let choice of detail?.choices">{{choice}}, </small><br><br>
+
+
+          <a class="w-75 mx-5 btn btn-primary">Book</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="card-body mt-2">
+          <h4>Popular Facilities</h4>
+          <a class="btn me-2 mt-3 px-2 py-1 " *ngFor="let Facility of detail?.hotelAmenities">{{Facility}}</a>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4">
+        <div class="card-body p-4 mt-1 bg-white shadow" >
+          <h6 style="font-weight: bolder;color: #000000;">CONTACT</h6>
+          <small style="font-weight: bolder;">{{detail?.contact?.phone}}</small><br>
+          <small style="font-weight: bolder;">{{detail?.contact?.email}}</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-body mt-3" id="booking-content">
+      <form #roomForm="ngForm" (submit)="booking(roomForm)" method="post">
+        <div class="row">
+          <div class="col-lg-10 col-md-10">
+            <table class="table table-bordered">
+              <thead>
+                <tr class="bg-primary">
+                  <th scope="col">Room Type</th>
+                  <th scope="col">No Of Guests</th>
+                  <th scope="col">Today's Price</th>
+                  <th scope="col">Your Choices</th>
+                  <th scope="col">Select Rooms</th>
+                  <th>
+                    <div class="col-lg-2 col-md-2">
+                      <button type="submit" class="btn btn-primary px-4 py-2">Book</button>
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let roomType of detail?.roomTypes;let i = index">
+                  <td class="w-25">
+                    <div class="pb-1">
+                    <h6> {{roomType.name}}</h6>
+                      <i class="bi bi-check-circle-fill" style="color:red"></i>
+                      <small> only {{roomType.availability}} rooms left in our property</small><br>
+                      <small>&nbsp;{{roomType.beds}}</small>
+                    </div>
+                    <ul class="d-flex flex-wrap list-unstyled border-top pt-1">
+                      <li class="w-auto me-3" *ngFor="let Facility of detail?.roomFacilities"> <small style="font-size: 12px;"><i class="bi bi-check text-success"></i> {{ Facility }}</small></li>
+                    </ul>
+                  </td>
+                  <td>
+                    <small *ngFor="let _ of [].constructor(roomType.guests)">
+                      <i class="bi bi-person-fill"></i>
+                    </small>
+                  </td>
+                  <td>
+                    <s>&#8377;{{roomType.roomPrice}}</s><br>
+                    <small>&#8377;{{roomType.roomOfferPrice}}</small><br>
+                    <small>+ taxes and charges</small><br>
+                    <p class="mt-2"><small class="w-50 bg-primary p-2 rounded text-white">{{(((roomType.roomPrice - roomType.roomOfferPrice)/roomType.roomPrice)*100)| number:'1.0-0' }}% Off</small></p>
+                  </td>
+                  <td>
+                    <div *ngFor="let choice of detail?.choices">
+                      <ul class=" m-0 list-unstyled">
+                        <li class="">
+                          <i class="bi bi-check text-success"></i> <small class="p-0 m-0" >{{choice}}</small>
+                        </li>
+                      </ul>
+                    </div>
+                    </td>
+                  <td>
+                  <div>
+                    <select class="form-select" name="noOfRooms{{i}}" [(ngModel)]="noOfRooms[i]" (change)="onRoomChange(i)">
+                      <option *ngFor="let n of roomOptions;" value={{n}} >{{ n }}</option>
+                    </select>
+                  </div>
+                  </td>
+                  <td>
+                    <ng-container *ngIf="noOfRooms[i]">
+                      <p>{{noOfRooms[i] }} {{ noOfRooms[i] && noOfRooms[i]==1 ?  'room' : 'rooms'}} for</p>
+                      <p>{{ noOfRooms[i] && noOfRooms[i] > 0
+                        ? '₹' + (noOfRooms[i] * roomType.roomOfferPrice)
+                        : 'Please select room' }}</p>
+                        <p>
+                          Total Rooms : {{total}}
+                        </p>
+                    </ng-container>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+    </form>
+    </div>
+
+  </div>
+</div>
+<app-hotel-booking-footer></app-hotel-booking-footer>

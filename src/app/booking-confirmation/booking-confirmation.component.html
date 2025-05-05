@@ -1,0 +1,70 @@
+<div class="container-fluid">
+  <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card shadow-lg rounded-4">
+            <div class="card-body text-center p-5">
+              <div class="mb-4">
+                <i class="bi bi-check-circle-fill text-success" style="font-size: 4rem;"></i>
+              </div>
+              <h2 class="card-title mb-3 text-success">Booking Confirmed!</h2>
+              <p class="card-text fs-5">
+                Thank you for your booking. A confirmation email has been sent to your registered email address.
+              </p>
+              <p class="text-muted">We look forward to hosting you!</p>
+              <a href="/" class="btn btn-primary mt-4 px-4 py-2">Back to Home</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  <div class="container my-5" style="max-width: 800px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333;">
+
+    <div class="text-center mb-4">
+      <i class="bi bi-check-circle-fill text-success" style="font-size: 4rem;"></i>
+      <h2 class="mt-3">Booking Confirmation</h2>
+      <p class="text-muted">Thank you for choosing Taj Mahal Palace</p>
+    </div>
+
+    <hr class="mb-4">
+
+    <div class="mb-4">
+      <h5 class="text-primary mb-3">Guest Information</h5>
+      <p><strong>Name: </strong> {{customerDetails.firstName + customerDetails.lastName}}</p>
+      <p><strong>Email:</strong> {{customerDetails.email}}</p>
+      <p><strong>Phone:</strong> {{customerDetails.phone}}</p>
+    </div>
+
+    <hr>
+
+    <div class="mb-4">
+      <h5 class="text-primary mb-3">Booking Details</h5>
+      <p><strong>Hotel:</strong> Taj Mahal Palace</p>
+      <p><strong>Room Type:</strong> Deluxe Sea View Room</p>
+      <p><strong>Check-In:</strong> 25 April 2025</p>
+      <p><strong>Check-Out:</strong> 28 April 2025</p>
+      <p><strong>No. of Guests:</strong> 2 Adults, 1 Child</p>
+      <p><strong>No. of Rooms:</strong> 1 Room</p>
+      <p><strong>Total Amount:</strong> ₹15,000</p>
+    </div>
+
+    <hr>
+
+    <div class="mb-4">
+      <h5 class="text-primary mb-3">Payment Information</h5>
+      <p><strong>Payment Status:</strong> Paid</p>
+      <p><strong>Payment Method:</strong> Credit Card (**** 2345)</p>
+    </div>
+
+    <hr>
+
+    <div class="text-center mt-5">
+      <p class="text-muted">We look forward to welcoming you!</p>
+      <small>For any assistance, contact us at supporttajhotels.com</small>
+    </div>
+
+  </div>
+
+</div>

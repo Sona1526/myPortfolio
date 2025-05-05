@@ -1,1 +1,91 @@
-<p>hotels works!</p>
+<app-hotel-booking-navbar></app-hotel-booking-navbar>
+<div class="container-fluid">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-3">
+        <div class="card" *ngFor="let filter of filterList">
+          <form #filterForm="ngForm" method="post">
+            <div class="card-body">
+              <div class="mb-0">
+                <h5>Filter by:</h5>
+                <h6>Your budget (per night)</h6>
+                <div class="d-flex align-items-center justify-content-between">
+                  <label class="form-label me-2">Min: &#8377;{{ minBudget }}</label>
+                  <label class="form-label ms-2">Max: &#8377;{{ maxBudget === 10000 ? '10000+' : maxBudget }}</label>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                  <input type="range" class="form-range" min="300"  max="10000"  step="10" [(ngModel)]="minBudget" name="minBudget"  (input)="validateRange()" />
+                  <input type="range" class="form-range" min="300" max="10000" step="10" [(ngModel)]="maxBudget" name="maxBudget" (input)="validateRange()"  />
+                </div>
+              </div>
+            </div><hr>
+            <!-- Loop through all filters -->
+            <div class="card-body mt-0 pt-0">
+              <div *ngFor="let filter of filterList">
+                <!-- Repeated Filters -->
+                <ng-container *ngFor="let section of sectionFilter">
+                  <h6 class="mt-0">{{ section.label }}</h6>
+                  <ul class="list-unstyled">
+                    <li class="form-check mb-2" *ngFor="let item of sanitizeFilterValues(section.key, filter)">
+                      <input class="form-check-input" type="checkbox" [checked]="isChecked(item)"
+                              (change)="onCheckboxChange(item, $event)">
+                      <label class="form-check-label d-flex justify-content-between">
+                      <span>{{ item }}</span>
+                        <!-- <span class="badge bg-secondary">{{ getItemCount(section.key, item) }}</span> -->
+                      </label>
+                    </li>
+                  </ul>
+                </ng-container>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-9">
+        <h3 class="card-title m-1 p-1">{{searchResult.length}} Properties Found in {{receivedMessage | titlecase}}</h3>
+        <div class="card border-0" *ngIf="searchResult.length > 0 ">
+          <div class="card-body" *ngFor="let hotel of searchResult">
+            <div class="card border-0 p-3 bg-white shadow-sm shadow-primary">
+              <div class="row">
+                <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 ">
+                  <a [routerLink]="['/hotelDetails', hotel.id]"><img src="hotelbookingimages/tajmahal.jpg" class="w-100 img-fluid" ></a>
+                </div>
+                <div class="col-lg-5 col-md-10 col-sm-11 col-xs-11 " [routerLink]="['/hotelDetails', hotel.id]">
+                  <h5>
+                    <a [routerLink]="['/hotelDetails', hotel.id]" class="text-primary fw-bolder text-decoration-none">{{hotel.hotelName}}
+                      <small style="font-size: small;" class="ps-1" *ngFor="let star of getStars(hotel.starRating)">
+                         <i class="text-warning bi bi-star-fill"></i>
+                      </small>
+                      <small style="font-size: small;" class="ps-1" *ngIf="hotel.starRating%1 !== 0">
+                        <i class="text-warning bi bi-star-half"></i>
+                      </small>
+                    </a>
+                  </h5>
+                  <a [routerLink]="['/hotelDetails', hotel.id]" class="text-primary">{{ hotel.site | titlecase}} - {{hotel.propertyType}}</a><br>
+                  <a [routerLink]="['/hotelDetails', hotel.id]" style="font-size: small;">{{hotel.address}}</a>
+                  <div style="line-height:1.1;" class="ps-3 mt-1 border-start">
+                    <small style="font-size: small;">{{hotel.choices}}</small>
+                    <h6 style="margin-top: 50px;" class="p-0 m-0" *ngFor="let ament of hotel.hotelAmenities">
+                      <small style="font-size: small;" class="text-success fw-bolder" *ngIf="ament === 'Breakfast'"> {{ament}} Included</small>
+                    </h6>
+                    <h6 class="" *ngFor="let avl of hotel.roomTypes; let i = index">
+                      <small style="font-size: small;" class="text-danger fw-bolder" *ngIf="avl.availability < 5 && i===0 ">only {{avl.availability}} rooms left on our site</small>
+                    </h6>
+
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-2 col-sm-1 col-xs-1 text-end">
+                  <p class=""><small class="bg-primary text-white p-1">{{hotel.reviewRating}}</small><small> {{hotel.reviewCount}} reviews</small></p>
+                  <p><small class="text-muted" style="font-size: x-small;">1 night, 2 adults</small><br>
+                  <s>&#8377;{{ hotel.actualPrice }}</s> <strong> &#8377;{{ hotel.offerPrice }}</strong></p>
+                  <button type="button" class="btn btn-warning" [routerLink]="['/hotelDetails', hotel.id]">See Availability</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-hotel-booking-footer></app-hotel-booking-footer>
