@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {RouterModule, Routes } from '@angular/router';
-
+import { provideRouter, withDisabledInitialNavigation } from '@angular/router';
 import { MyprojectsComponent } from './myprojects/myprojects.component';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -15,7 +15,7 @@ export const routes: Routes = [
   {path:'myprojects' , component:MyprojectsComponent},
   {path:'hotelbooking' , component:HotelbookingComponent},
   {path:'hotels' , component:HotelsComponent},
-  {path:'hotelDetails/:id' , component:HoteldetailsComponent},
+  {path:'hotelDetails/:id' , component:HoteldetailsComponent, data: { renderMode: 'no-pre-render' }},
   {path:'booking' , component:BookingPageComponent},
   {path:'booking-confirmation' , component:BookingConfirmationComponent}
 ];
